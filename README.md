@@ -1,1 +1,1 @@
-# Contract-With-Tokenomics
+This contract doesn't belong to me.
