@@ -2,6 +2,14 @@
 
 pragma solidity ^0.8.4;
 
+// Editlenecek yerler:
+// 165. satır = _owner
+// 373. satır = kontratın adı
+// 382. satır = _developmentWalletAddress
+// 387. ve 388. satırlar = _name ve _symbol
+// 390, 392, 394 = Fee'leri ayarla (50 = %5)
+
+
 interface IERC20 {
     function totalSupply() external view returns (uint256);
     function balanceOf(address account) external view returns (uint256);
@@ -154,7 +162,7 @@ abstract contract Ownable is Context {
     address private _owner;
     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
     constructor () {
-        _owner = 0xE69Ac38Cd6DA0EA9a540B47399C430131216Ced7;
+        _owner = 0x1c4f0040c0DcEfB62aB79cDECB56dce6263d2757;
         emit OwnershipTransferred(address(0), _owner);
     }
     function owner() public view virtual returns (address) {
@@ -362,7 +370,7 @@ interface IUniswapV2Router02 is IUniswapV2Router01 {
     ) external;
 }
 
-contract COMF is Context, IERC20, Ownable {
+contract TFMP is Context, IERC20, Ownable {
     using SafeMath for uint256;
     using Address for address;
     mapping (address => uint256) private _rOwned;
@@ -371,19 +379,19 @@ contract COMF is Context, IERC20, Ownable {
     mapping (address => bool) private _isExcludedFromFee;
     mapping (address => bool) private _isExcluded;
     address[] private _excluded;
-    address private _developmentWalletAddress = 0xE69Ac38Cd6DA0EA9a540B47399C430131216Ced7;
+    address private _developmentWalletAddress = 0x847DB6109C1965cACBA98A04C7891c9bED894a59;
     uint256 private constant MAX = ~uint256(0);
     uint256 private _tTotal = 1000000000000 * 10**18;
     uint256 private _rTotal = (MAX - (MAX % _tTotal));
     uint256 private _tFeeTotal;
-    string private _name = "Comfy Rocket";
-    string private _symbol = "COMF";
+    string private _name = "ThanksForMoneyPal";
+    string private _symbol = "TFMP";
     uint8 private _decimals = 18;
-    uint256 public _taxFee = 20;
+    uint256 public _taxFee = 20;    // Fee that goes to everones' address each transaction
     uint256 private _previousTaxFee = _taxFee;
-    uint256 public _developmentFee = 10;
+    uint256 public _developmentFee = 10;    // Fee that goes to address called "_developmentWalletAddress"
     uint256 private _previousDevelopmentFee = _developmentFee;
-    uint256 public _liquidityFee = 50;
+    uint256 public _liquidityFee = 50;  // Fee that goes to liquidity
     uint256 private _previousLiquidityFee = _liquidityFee;
 
     IUniswapV2Router02 public immutable uniswapV2Router;
