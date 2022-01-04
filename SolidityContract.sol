@@ -379,7 +379,7 @@ contract TFMP is Context, IERC20, Ownable {
     mapping (address => bool) private _isExcludedFromFee;
     mapping (address => bool) private _isExcluded;
     address[] private _excluded;
-    address private _developmentWalletAddress = 0x847DB6109C1965cACBA98A04C7891c9bED894a59;
+    address private _developmentWalletAddress = 0x397a1a8a9d3B827d38eB19173924B8591B851451;
     uint256 private constant MAX = ~uint256(0);
     uint256 private _tTotal = 1000000000000 * 10**18;
     uint256 private _rTotal = (MAX - (MAX % _tTotal));
